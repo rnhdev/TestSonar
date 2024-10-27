@@ -25,8 +25,6 @@ jobs:
     outputs:
       web_app_changed: ${{ steps.filter.outputs.web_app }}
       servicio_sistema_changed: ${{ steps.filter.outputs.servicio_sistema }}
-      servicio_usuario_changed: ${{ steps.filter.outputs.servicio_usuario }}
-      servicio_incidente_changed: ${{ steps.filter.outputs.servicio_incidente }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
