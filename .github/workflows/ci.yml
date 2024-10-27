@@ -71,8 +71,8 @@ jobs:
         with:
           projectBaseDir: ./web-app
           args: >
-            -Dsonar.projectKey=rnhuni_ProyectoFinal2-Grupo03
-            -Dsonar.organization=rnhuni
+            -Dsonar.projectKey=rnhdev_TestSonar
+            -Dsonar.organization=rnhdev
             -Dsonar.sources=./src
             -Dsonar.exclusions=**/*.test.tsx
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
@@ -101,19 +101,17 @@ jobs:
       - name: Run tests for ServicioSistema
         working-directory: ./microservices/ServicioSistema
         run: |
-          pytest --cov=. --cov-report=xml --cov-report=term -v -s --cov-fail-under=90          
+          pytest --cov=. --cov-config=.coveragerc --cov-report=xml --cov-report=term -v -s --cov-fail-under=90          
 
       - name: Run SonarCloud Scan for ServicioSistema
         uses: SonarSource/sonarcloud-github-action@v2
         continue-on-error: true
         with:
-          projectBaseDir: ./microservices/ServicioSistema
           args: >
-            -Dsonar.projectKey=rnhuni_ProyectoFinal2-Grupo03
-            -Dsonar.organization=rnhuni
+            -Dsonar.projectKey=rnhdev_TestSonar
+            -Dsonar.organization=rnhdev
             -Dsonar.exclusions=**/tests/**,**/__init__.py,**/app.py,**/users/**
-            -Dsonar.sources=.
-            -Dsonar.python.coverage.reportPaths=./coverage.xml
+            -Dsonar.sources=./microservices/ServicioSistema
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -146,12 +144,11 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2
         continue-on-error: true
         with:
-          projectBaseDir: ./microservices/ServicioUsuario
           args: >
-            -Dsonar.projectKey=rnhuni_ProyectoFinal2-Grupo03
-            -Dsonar.organization=rnhuni
+            -Dsonar.projectKey=rnhdev_TestSonar
+            -Dsonar.organization=rnhdev
             -Dsonar.exclusions=**/tests/**,**/__init__.py,**/app.py,**/users/**
-            -Dsonar.sources=.
+            -Dsonar.sources=./microservices/ServicioUsuario
             -Dsonar.python.coverage.reportPaths=./coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -185,12 +182,11 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2
         continue-on-error: true
         with:
-          projectBaseDir: ./microservices/ServicioIncidente
           args: >
-            -Dsonar.projectKey=rnhuni_ProyectoFinal2-Grupo03
-            -Dsonar.organization=rnhuni
+            -Dsonar.projectKey=rnhdev_TestSonar
+            -Dsonar.organization=rnhdev
             -Dsonar.exclusions=**/tests/**,**/__init__.py,**/app.py
-            -Dsonar.sources=.
+            -Dsonar.sources=./microservices/ServicioIncidente
             -Dsonar.python.coverage.reportPaths=./coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
