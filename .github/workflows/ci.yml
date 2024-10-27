@@ -25,6 +25,8 @@ jobs:
     outputs:
       web_app_changed: ${{ steps.filter.outputs.web_app }}
       servicio_sistema_changed: ${{ steps.filter.outputs.servicio_sistema }}
+      servicio_usuario_changed: ${{ steps.filter.outputs.servicio_usuario }}
+      servicio_incidente_changed: ${{ steps.filter.outputs.servicio_incidente }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -65,15 +67,6 @@ jobs:
 
       - name: Run SonarCloud Scan for web-app
         uses: SonarSource/sonarcloud-github-action@v2
-        continue-on-error: true
-        with:
-          projectBaseDir: ./web-app
-          args: >
-            -Dsonar.projectKey=rnhdev_TestSonar
-            -Dsonar.organization=rnhdev
-            -Dsonar.sources=./src
-            -Dsonar.exclusions=**/*.test.tsx
-            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -103,7 +96,6 @@ jobs:
 
       - name: Run SonarCloud Scan for ServicioSistema
         uses: SonarSource/sonarcloud-github-action@v2
-        continue-on-error: false
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -134,14 +126,6 @@ jobs:
 
       - name: Run SonarCloud Scan for ServicioUsuario
         uses: SonarSource/sonarcloud-github-action@v2
-        continue-on-error: true
-        with:
-          args: >
-            -Dsonar.projectKey=rnhdev_TestSonar
-            -Dsonar.organization=rnhdev
-            -Dsonar.exclusions=**/tests/**,**/__init__.py,**/app.py,**/users/**
-            -Dsonar.sources=./microservices/ServicioUsuario
-            -Dsonar.python.coverage.reportPaths=./coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -172,13 +156,5 @@ jobs:
 
       - name: Run SonarCloud Scan for ServicioIncidente
         uses: SonarSource/sonarcloud-github-action@v2
-        continue-on-error: true
-        with:
-          args: >
-            -Dsonar.projectKey=rnhdev_TestSonar
-            -Dsonar.organization=rnhdev
-            -Dsonar.exclusions=**/tests/**,**/__init__.py,**/app.py
-            -Dsonar.sources=./microservices/ServicioIncidente
-            -Dsonar.python.coverage.reportPaths=./coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
