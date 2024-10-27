@@ -103,13 +103,7 @@ jobs:
 
       - name: Run SonarCloud Scan for ServicioSistema
         uses: SonarSource/sonarcloud-github-action@v2
-        continue-on-error: true
-        with:
-          args: >
-            -Dsonar.projectKey=rnhdev_TestSonar
-            -Dsonar.organization=rnhdev
-            -Dsonar.exclusions=**/tests/**,**/__init__.py,**/app.py,**/users/**
-            -Dsonar.sources=./microservices/ServicioSistema
+        continue-on-error: false
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
