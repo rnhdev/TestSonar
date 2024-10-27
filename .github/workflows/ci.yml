@@ -42,8 +42,7 @@ jobs:
               - 'microservices/ServicioSistema/**'
             servicio_usuario:
               - 'microservices/ServicioUsuario/**'
-            servicio_incidente:
-              - 'microservices/ServicioIncidente/**'
+            
 
   test-web-app:
     if: needs.determine-changes.outputs.web_app_changed == 'true'
