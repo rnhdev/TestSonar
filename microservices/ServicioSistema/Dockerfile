@@ -14,6 +14,9 @@ COPY models/ ./models/
 COPY services/ ./services/
 COPY utils/ ./utils/
 
+RUN useradd -m appuser && chown -R appuser /ServicioSistema
+USER appuser
+
 EXPOSE 5000
 
 ENV FLASK_APP=app.py
