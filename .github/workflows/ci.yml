@@ -167,5 +167,10 @@ jobs:
 
       - name: Run SonarCloud Scan for ServicioIncidente
         uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          args: >
+            -Dsonar.organization=rnhdev
+            -Dsonar.projectKey=rnhdev_TestSonarServicioIncidente
+            -Dsonar.projectBaseDir=microservices/ServicioIncidente
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
