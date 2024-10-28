@@ -132,6 +132,11 @@ jobs:
 
       - name: Run SonarCloud Scan for ServicioUsuario
         uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          args: >
+            -Dsonar.organization=rnhdev
+            -Dsonar.projectKey=rnhdev_TestSonar
+            -Dsonar.projectBaseDir=microservices/ServicioUsuario
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
