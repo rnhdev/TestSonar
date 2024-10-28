@@ -100,7 +100,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=rnhdev
-            -Dsonar.projectKey=rnhdev_TestSonar
+            -Dsonar.projectKey=rnhdev_TestSonarServicioSistema
             -Dsonar.projectBaseDir=microservices/ServicioSistema
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -135,7 +135,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=rnhdev
-            -Dsonar.projectKey=rnhdev_TestSonar
+            -Dsonar.projectKey=rnhdev_TestSonarServicioUsuario
             -Dsonar.projectBaseDir=microservices/ServicioUsuario
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
