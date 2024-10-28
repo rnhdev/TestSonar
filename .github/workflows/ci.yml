@@ -70,6 +70,11 @@ jobs:
 
       - name: Run SonarCloud Scan for web-app
         uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          args: >
+            -Dsonar.organization=rnhdev
+            -Dsonar.projectKey=rnhdev_TestSonarWebApp
+            -Dsonar.projectBaseDir=microservices/web-app
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
